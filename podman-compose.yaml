@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  timescale:
+    image: docker.io/timescale/timescaledb:latest-pg12
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.podman-compose/pg-data:/var/lib/postgresql/data:z
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: tic
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+      POSTGRES_DB: tic
+  mosquitto:
+    image: docker.io/library/eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./.podman-compose/mosquitto-data:/mosquitto/data:z
+      - ./.podman-compose/mosquitto-config:/mosquitto/config:z

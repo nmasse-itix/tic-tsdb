@@ -1,0 +1,12 @@
+mqtt:
+  broker: tcp://localhost:1883
+  username: dev
+  password: secret
+  timeout: 5s
+  gracePeriod: 2s
+sql:
+  database: tic
+  username: tic
+  password: secret
+  hostname: localhost
+  port: 5432
