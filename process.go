@@ -163,7 +163,6 @@ func (processor *Processor) Process() error {
 	// process MQTT messages
 	for {
 		msg := <-processor.messages
-		processor.Config.Logger.Printf("%s: %s", msg.Field, msg.Value)
 
 		var err error
 		if msg.Field == "IINST" || msg.Field == "IINST1" || msg.Field == "IINST2" || msg.Field == "IINST3" {
