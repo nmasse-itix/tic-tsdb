@@ -88,19 +88,19 @@ const (
 	// SQL Query to store current data
 	UpsertCurrentQuery string = `
 	INSERT INTO current VALUES ($1, $2, $3)
-  	ON CONFLICT (time, phase) DO UPDATE
+	ON CONFLICT (timestamp, phase) DO UPDATE
     SET current = excluded.current`
 
 	// SQL Query to store power data
 	UpsertPowerQuery string = `
 	INSERT INTO power VALUES ($1, $2)
-  	ON CONFLICT (time) DO UPDATE
+	ON CONFLICT (timestamp) DO UPDATE
     SET power = excluded.power`
 
 	// SQL Query to store energy data
 	UpsertEnergyQuery string = `
 	INSERT INTO energy VALUES ($1, $2, $3)
-  	ON CONFLICT (time, tariff) DO UPDATE
+	ON CONFLICT (timestamp, tariff) DO UPDATE
     SET reading = excluded.reading`
 )
 
